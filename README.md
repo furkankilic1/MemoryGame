@@ -3,7 +3,7 @@
 - Then, the numbers occur in boxses in order and you try to click the boxes in that order. 
 - If you click the all boxes in order you win, else you fail. 
 - Also, you can change the background of the game.
-#### Technologies used: CSS, JavaScript, and JQuery 
+#### Technologies used: Html, Css, JavaScript, JQuery 
 
 ![chrome_xri2TQc3fk](https://user-images.githubusercontent.com/58864953/100443609-14263d00-30bb-11eb-977b-b6c5f19367b5.png)
 ![chrome_yt9GrECgGJ](https://user-images.githubusercontent.com/58864953/100443612-16889700-30bb-11eb-82a6-c7ecd0a8a6ca.jpg)
