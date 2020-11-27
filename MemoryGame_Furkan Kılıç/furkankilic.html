@@ -1,0 +1,351 @@
+<!-- 
+Furkan Kılıç 
+21601729
+CTIS 255-2
+MEMORY GAME PROJECT 
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> Memory Game Furkan Kılıç</title>
+    <script src="jquery-3.1.1.js" type="text/javascript"></script>
+    <script src="confetti.js"></script>
+    <style>
+        body {
+            background-image: url(img/backimg.jpeg);
+            background-size: cover;
+        }
+
+        #profileImg {
+            width: 120px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 10px;
+        }
+
+        #firstdiv table {
+            border: 2px solid rgb(97, 85, 85);
+            border-collapse: collapse;
+            margin: 0 auto;
+            font-family: cursive;
+            font-weight: bold;
+        }
+
+        #firstdiv table tr td {
+            border: 2px solid rgb(97, 85, 85);
+        }
+
+        .dis {
+            text-align: center;
+            padding-left: 5px;
+            padding-right: 5px;
+        }
+
+        .addplay img {
+            width: 50px;
+            height: 30px;
+            padding-left: 10px;
+        }
+
+        #myheader {
+            text-align: center;
+            color: rgb(48, 33, 10);
+            font-weight: bold;
+            font-family: cursive;
+            font-size: 20px;
+            padding-left: 20px;
+            background-color: blanchedalmond;
+        }
+
+        #selectb {
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+
+        .selectInput {
+            border-radius: .5em;
+            background-color: rgb(53, 47, 47);
+            color: wheat;
+        }
+
+        #firstdiv {
+            background: url(img/moon.png) no-repeat;
+            background-position: center;
+            background-size: 550px;
+            margin: -400px auto;
+            padding: 100px 0px 100px 0px;
+            color: rgb(48, 33, 10);
+            opacity: 0.1;
+        }
+
+        #playimg {
+            border-left: none;
+            padding-left: 120px;
+            padding-top: 5px;
+            background-color: blanchedalmond;
+        }
+
+        #secdiv {
+            opacity: 0;
+        }
+
+        #playground {
+            display: flex;
+        }
+
+        #playground table {
+            border-spacing: 10px;
+            margin: 50px auto;
+            background-image: url(img/back2.jpg);
+            width: 500px;
+            height: 500px;
+            border: 4px solid rgb(212, 212, 212);
+        }
+
+        #playground table tr td {
+            width: 55px;
+            height: 55px;
+            background-color: gray;
+            opacity: 0;
+            color: rgb(202, 228, 143);
+            font-family: cursive;
+            font-size: 35px;
+            text-align: center;
+            font-weight: bold;
+            border-radius: 10%;
+        }
+
+        #playground table tr td img {
+            width: 25px;
+            height: 25px;
+            opacity: 1;
+        }
+
+        #finish {
+            color: red;
+            font-size: 36px;
+            text-align: center;
+            font-family: fantasy;
+            position: absolute;
+            top: 150px;
+            left: 170px;
+            margin: -100px auto;
+            background-color: black;
+            opacity: 0.8;
+            padding-left: 5px;
+            width: 1000px;
+            height: 490px;
+            padding-top: 25px;
+        }
+
+        #bgmode {
+            text-align: center;
+            background-color: blanchedalmond;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- First page table and background -->
+    <form name="myform">
+        <div id="firstdiv">
+            <table>
+                <tr>
+                    <td colspan="5" id="myheader">Memory Test</td>
+                </tr>
+                <tr>
+                    <td rowspan="5">
+                        <img src="img/brain.png" id="profileImg">
+                    </td>
+                <tr>
+                    <td class="dis" colspan="4">CTIS 255 PROJECT</td>
+                </tr>
+                <tr>
+                    <td class="dis" colspan="4">Fall 2019</td>
+                </tr>
+                <tr>
+                    <td class="dis" colspan="4">Furkan Kılıç</td>
+                </tr>
+                <tr>
+                    <td class="dis" colspan="3">Difficulty : </td>
+                    <td class="dis" colspan="1" id="selectb">
+                        <select name="sel" class="selectInput">
+                            <option value="4">4</option>
+                            <option value="6">6</option>
+                            <option value="8">8</option>
+                            <option value="10">10</option>
+                        </select>
+                    </td>
+                </tr>
+                </tr>
+                <tr>
+                    <td colspan="5" id="bgmode">
+                        <div>Background</div>
+                        <input type="radio" name="myrad" value="0" id="space" checked>Space
+                        <input type="radio" name="myrad" value="1" id="forest">Forest
+                    </td>
+                </tr>
+                <tr>
+                    <td id="playimg" class="addplay" colspan="5">
+                        <img src="img/play.png" id="play">
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <!-- After click play button, Second table -->
+        <div id="secdiv">
+            <div id="playground">
+                <table>
+                    <tr>
+                        <td id="0"></td>
+                        <td id="1"></td>
+                        <td id="2"></td>
+                        <td id="3"></td>
+                        <td id="4"></td>
+                        <td id="5"></td>
+                    </tr>
+                    <tr>
+                        <td id="6"></td>
+                        <td id="7"></td>
+                        <td id="8"></td>
+                        <td id="9"></td>
+                        <td id="10"></td>
+                        <td id="11"></td>
+                    </tr>
+                    <tr>
+                        <td id="12"></td>
+                        <td id="13"></td>
+                        <td id="14"></td>
+                        <td id="15"></td>
+                        <td id="16"></td>
+                        <td id="17"></td>
+                    </tr>
+                    <tr>
+                        <td id="18"></td>
+                        <td id="19"></td>
+                        <td id="20"></td>
+                        <td id="21"></td>
+                        <td id="22"></td>
+                        <td id="23"></td>
+                    </tr>
+                    <tr>
+                        <td id="24"></td>
+                        <td id="25"></td>
+                        <td id="26"></td>
+                        <td id="27"></td>
+                        <td id="28"></td>
+                        <td id="29"></td>
+                    </tr>
+                    <tr>
+                        <td id="30"></td>
+                        <td id="31"></td>
+                        <td id="32"></td>
+                        <td id="33"></td>
+                        <td id="34"></td>
+                        <td id="35"></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <!-- Result, Conratulations or Failed -->
+        <div id="finish"> </div>
+    </form>
+    <script>
+
+        $(function () {
+
+            var diffLevel, tot;
+            $("#finish").fadeOut(0);
+            $("#secdiv").fadeOut(0);
+            $("#firstdiv").animate({ width: '600px', opacity: '1', margin: '60px auto' }, 1200);
+            confetti.stop();
+            $("#play").one("click", function () {
+                $("#firstdiv").fadeOut(500);
+                $("#secdiv").animate({ opacity: '0.9' }, 500).fadeIn(1000);
+
+                var arr = ["#0", "#1", "#2", "#3", "#4", "#5", "#6", "#7", "#8", "#9", "#10",
+                    "#11", "#12", "#13", "#14", "#15", "#16", "#17", "#18", "#19", "#20", "#21", "#22",
+                    "#23", "#24", "#25", "#26", "#27", "#28", "#29", "#30", "#31", "#32", "#33", "#34", "#35"];
+
+                diffLevel = myform.sel.value;
+
+                var ran = [];
+                while (ran.length < diffLevel) {
+                    var r = Math.floor(Math.random() * 36);
+                    if (ran.indexOf(r) === -1) ran.push(r);
+                }
+
+                var say = 2, tık = 0;
+                for (var i = 0; i < diffLevel; i++) {
+
+                    (function (i) {
+                        var num = ran[i];
+                        $(arr[num]).animate({ opacity: '1' }, 3000);
+
+                        var tim1 = setTimeout(function () {
+                            $(arr[num]).html(i + 1);
+                        }, (say * 1000));
+                        say++;
+                        var tim2 = setTimeout(function () {
+                            $(arr[num]).html("");
+                        }, (say * 1000));
+                        say++;
+
+                        $(arr[num]).click(function () {
+                            tık++;
+                            if (tık == i + 1) {
+                                $(arr[num]).html(`<img src="img/tick.png" alt="">`);
+                                if (tık == diffLevel) {
+                                    $("#finish").html(`<h1>Conratulations</h1><h4>You completed level ${diffLevel}.</h4><h5>F5 to Restart Game. </h5>`)
+                                        .css({ "color": "green", "font-size": "35px" }).fadeIn(1000)
+                                        .animate({ top: "-=65px" }, 400).animate({ top: "+=130px" }, 600)
+                                        .animate({ top: "-=65px" }, 400);
+
+                                    confetti.start();
+                                }
+                            } else {
+                                $(arr[num]).html(`<img src="img/no.png" alt="">`);
+                                $("#finish").html(`<h1>FAILED</h1><h4>You have failed in level ${diffLevel}.</h4><h5>F5 to Restart Game. </h5>`).fadeIn(1000)
+                                    .animate({ margin: "-=100px" }, 400).animate({ margin: "+=150px" }, 600).animate({ margin: "-=50px" }, 400);
+                            }
+                        });
+                    })(i);
+                }
+            });
+
+            // Background chance
+            $("#forest").click(function () {
+                $("#firstdiv").css({ "background": "none", "opacity": "1" });
+                document.body.style.backgroundImage = "url('img/orman2.jpg')";
+                $("#bgmode").css("background-color", "rgb(59, 138, 89)");
+                $("#myheader").css("background-color", "rgb(59, 138, 89)");
+                $("#playimg").css("background-color", "rgb(59, 138, 89)");
+                $("#firstdiv table").css("background-color", "rgb(158, 158, 158)");
+                $("#play").attr("src", "img/play2222.png")
+                $("#playground table").css("background", "url(img/back4.jpg) no-repeat");
+                $("#playground table tr td").css({ "background-color": "white", "color": "rgb(126, 151, 66)" });
+            });
+
+            $("#space").click(function () {
+                document.body.style.backgroundImage = "url('img/backimg.jpeg')";
+                $("#firstdiv").css({
+                    "background": "url(img/moon.png) no-repeat", "background-position": "center",
+                    "background-size": "550px", "opacity": "1"
+                });
+                $("#bgmode").css("background-color", "blanchedalmond");
+                $("#myheader").css("background-color", "blanchedalmond");
+                $("#playimg").css("background-color", "blanchedalmond");
+                $("#firstdiv table").css("background", "none");
+                $("#play").attr("src", "img/play.png");
+                $("#playground table").css("background", "url(img/back2.jpg) no-repeat");
+                $("#playground table tr td").css({ "background-color": "gray", "color": "rgb(202, 228, 143)" });
+            });
+        });
+    </script>
+</body>
+
+</html>
